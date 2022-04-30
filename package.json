@@ -1,0 +1,23 @@
+{
+  "name": "m1_projeto3_blue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scarneiromarcelo/M1_Projeto3_Blue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scarneiromarcelo/M1_Projeto3_Blue/issues"
+  },
+  "homepage": "https://github.com/scarneiromarcelo/M1_Projeto3_Blue#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
