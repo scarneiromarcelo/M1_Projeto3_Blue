@@ -1,16 +1,12 @@
 const prompt = require('prompt-sync')();
  
-// Credenciais para iniciar o jogo
+// Criando o meu objeto personagem
 const personagem = {
     nome: '',
     statusMoral: 0,
-    // exibirStatus: function () {            
-    //     console.log(
-    //         this.nome + ' O nível de sua moral é ' + this.statusMoral)
-    // },
 }; 
 
-// Credenciais para jogar
+// Solicitando o nome do persogem
 personagem.nome = prompt('PROTAGONISTA: ').toUpperCase();
 console.clear();
 
@@ -23,7 +19,7 @@ console.log(`Ajude Dr(a) ${personagem.nome} a fazer tudo que conseguir ou quem s
 prompt('PRESS ENTER..');
 console.clear();
 
-// Objetos que recerão as interações
+// Objetos contendo ás interações
 const mollysQuarto = { 
     dia1: `Papai, preciso ir para aula hoje?`,
     dia2: `Papai, eu queria ir para aula..`,
@@ -83,7 +79,7 @@ function skip() {
 
 // Ciclos de 4 dias:
 for (let dia = 0; dia < 4; dia++) {
-    // Primeiro dia:
+    // Primeiro dia (ganha moral)
     if(dia == 1){        
         salaPrincipal();
         let escolha = +prompt('');
@@ -146,22 +142,12 @@ for (let dia = 0; dia < 4; dia++) {
             personagem.statusMoral++
         }
     }
-
+}
     console.log(personagem.statusMoral)
 
-//     // Segundo dia
-//     if(dia == 2){
-//         // console.log('O segundo dia do personagem.')
-//         curaAndamento.push('10');
-//     }
-//     // Terceiro dia
-//     if(dia == 3){
-//         // console.log('O terceiro dia do personagem.')
-//         curaAndamento.push('10');
-//     }
-//     // Quarto dia
-//     if(dia == 4){
-//         // console.log('O quarto dia do personagem.')
-//         curaAndamento.push('10');
-//     }
- }
+//     // Segundo dia (Ganha moral e perde moral)
+//     
+//     
+//     // Terceiro dia (Perde moral)
+//     
+//     // Quarto dia (Escolhas influenciarão nos status da moral e definirá se salva ou não o mundo.)  
