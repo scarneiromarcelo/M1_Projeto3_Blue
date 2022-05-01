@@ -7,8 +7,10 @@ const personagem = {
 }; 
 
 // Solicitando o nome do persogem
-personagem.nome = prompt('PROTAGONISTA: ').toUpperCase();
-console.clear();
+    do {
+        personagem.nome = prompt('PROTAGONISTA: ').toUpperCase();
+        console.clear();
+    } while (personagem.nome == '');
 
 // Introdução do Jogo
 console.log('Em 6 dias, todas as pessoas estarão mortas no planeta, e restam poucos dias de vida a essas pessoas.')
@@ -35,13 +37,14 @@ const banheiro = {
 }
 
 const irTrabalhar = {
-    dia1: `Ao sair pela porta, você pega o jornal.' 
-    "NEWS: Ontem uma equipe de médicos liderada pelo Dr(a) ${personagem.nome} encontrou a cura para o cancer..`,
-    dia2: `Ao sair pela porta, você pega o jornal. 
-    "NEWS: A cura do câncer descoberta no início desta semana foi considerada "mortal", de acordo com autoridades.`,
-    dia3: `Ao sair pela porta, você pega o jornal. 
+    dia1: `AO SAIR PELA PORTA VOCÊ PEGA O JORNAL:
+
+    "NEWS: Ontem uma equipe de médicos liderada pelo Dr(a) ${personagem.nome} encontrou a cura para o cancer.."`,
+    dia2: `AO SAIR PELA PORTA VOCÊ PEGA O JORNAL: 
+    "NEWS: A cura do câncer descoberta no início desta semana foi considerada "mortal", de acordo com autoridades."`,
+    dia3: `AO SAIR PELA PORTA VOCÊ PEGA O JORNAL: 
     "NEWS: líderes mundiais em toda a Terra dirigiram-se ao seu povo ontem e lhes falaram sobre o futuro "fim dos dias".`,
-    dia4: `Ao sair pela porta, você pega o jornal.
+    dia4: `AO SAIR PELA PORTA VOCÊ PEGA O JORNAL:
     "NEWS: O mundo todo está contando a solução do DR(A) ${personagem.nome}."`
 }
 
@@ -77,32 +80,48 @@ function skip() {
     return prompt('PRESS ENTER');
 }
 
+function lastChoice() {
+    console.log(`
+        VOCÊ ESTÁ NO TRABALHO:
+        [1] Para trabalhar no laborátório
+        [2] Para ir comemorar com os amigos`);
+}
+
+let escolha = 0
 // Ciclos de 4 dias:
-for (let dia = 0; dia < 4; dia++) {
+for (let dia = 1; dia < 4; dia++) {
     // Primeiro dia (ganha moral)
-    if(dia == 1){        
+    if(dia == 1){
+        do { // Valindo a repetição do arco 'casa'        
         salaPrincipal();
-        let escolha = +prompt('');
-        
+        escolha = +prompt('');
+        console.clear();
+
+         
+        if (escolha != 1 && escolha != 2 && escolha != 3){
+            salaPrincipal();
+            console.clear();
+        }
+    
         if (escolha == 1){
             console.log(
                 banheiro.dia1
                 )
             skip()
             console.clear(); 
-
-        }
-        salaPrincipal();
-        escolha = prompt('');
+    
+        }       
+    
         if (escolha == 2){
             console.log(
-                mollysQuarto.dia1
+                 mollysQuarto.dia1
                 )
-            skip();
+             skip();
             console.clear();
-        } 
-        salaPrincipal();
-        escolha = prompt('');
+        }
+    } while (escolha != 3);                
+    // Concluído a validação de repetição..
+
         if (escolha == 3){
             console.log(
                 irTrabalhar.dia1
@@ -110,7 +129,7 @@ for (let dia = 0; dia < 4; dia++) {
             skip();
             console.clear();
             personagem.statusMoral++            
-        }   
+           
         
         console.log(
             goToWork.dia1
@@ -125,14 +144,19 @@ for (let dia = 0; dia < 4; dia++) {
 
         skip();
         console.clear();
+    }
+    //Segunda validação
+        do {
+            lastChoice();
+            escolha = prompt('')
+            console.clear();
+        } while (escolha != 2 && escolha != 1)    
 
-        console.log(`
-        VOCÊ ESTÁ NO TRABALHO:
-        [1] Para trabalhar no laborátório
-        [2] Para ir comemorar com os amigos`);
+        
+        // if (escolha != 1 && escolha != 2){
+        //     lastChoice();            
+        // }
 
-        //Condições
-        escolha = prompt('')
         if (escolha == 2){
             console.log('Muito bom confraternizar com os amigos. MORAL ++')
             personagem.statusMoral++          
@@ -140,14 +164,16 @@ for (let dia = 0; dia < 4; dia++) {
         if (escolha == 1){
             console.log(`Ótimo Dr(a) ${personagem.nome} que bom que está pensando em aprimorar ás suas skills. MORAL ++`)
             personagem.statusMoral++
-        }
+        }      
     }
 }
-    console.log(personagem.statusMoral)
+
+    console.log(personagem.statusMoral);
 
 //     // Segundo dia (Ganha moral e perde moral)
 //     
 //     
 //     // Terceiro dia (Perde moral)
+
 //     
 //     // Quarto dia (Escolhas influenciarão nos status da moral e definirá se salva ou não o mundo.)  
