@@ -112,6 +112,21 @@ const atWork = {
     `
 }
 
+const lastChoice = {
+    dia1: `
+        VOCÊ ESTÁ NO TRABALHO:
+        [1] Para trabalhar no laborátório
+        [2] Para ir comemorar com os amigos`,
+
+    dia2: `
+    VOCÊ ESTÁ NO TRABALHO:
+
+    O SEU LABORATÓRIO ESTÁ TRANCADO !
+    [1] Para subir as escadas e ir até a cobertura
+    [2] Para voltar para casa e trabalhar homeoffice`,
+     
+}
+
 // Função para a sala principal
 function salaPrincipal() {
     return console.log(
@@ -126,12 +141,7 @@ function skip() {
     return prompt('PRESS ENTER');
 }
 
-function lastChoice() {
-    console.log(`
-        VOCÊ ESTÁ NO TRABALHO:
-        [1] Para trabalhar no laborátório
-        [2] Para ir comemorar com os amigos`);
-}
+
 
 let escolha = 0
 // Ciclos de 4 dias:
@@ -187,7 +197,7 @@ for (let dia = 1; dia < 4; dia++) {
     }
     //Segunda validação
         do {
-            lastChoice();
+            console.log(lastChoice.dia1);
             escolha = prompt('')
             console.clear();
         } while (escolha != 2 && escolha != 1);         
@@ -203,7 +213,9 @@ for (let dia = 1; dia < 4; dia++) {
             
             `);
             personagem.statusMoral++            
-        } 
+        }
+        
+        skip();
         console.clear();
         console.log(`01/11/1990
     
@@ -224,9 +236,7 @@ for (let dia = 1; dia < 4; dia++) {
     
     `);
     skip();
-    console.clear();
-
-    
+    console.clear();    
         
     do {
         salaPrincipal();
@@ -272,16 +282,36 @@ for (let dia = 1; dia < 4; dia++) {
             skip();
             console.clear();
 
-            personagem.statusMoral++ // Adicionando ponto ao status
+            //personagem.statusMoral++ // Adicionando ponto ao status
 
         }
 
+        do {
+            console.log(lastChoice.dia2);
+            escolha = prompt('')
+            console.clear();
+            
+        } while (escolha != 2 && escolha != 1);
         
-    }
+        if (escolha == 2){
+            console.log('Você retorna para sua casa e resolve dar andamento na pesquisa.. MORAL ++')
+            personagem.statusMoral++
+        }
+        if (escolha == 1){
+            console.log('Você encontra seu amigo de confiaça e ele lhe diz que vai abandonar a pesquisa.. MORAL --');
+            personagem.statusMoral--
+        }
 
-
-//     
-//     
+        skip();
+        console.clear();
+        console.log(`02/11/1990
+    
+        `)
+        skip();
+        console.clear();         
+        
+    }     
+     
 //     // Terceiro dia (Perde moral)
 
 //     
