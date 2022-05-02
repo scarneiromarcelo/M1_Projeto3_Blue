@@ -1,9 +1,11 @@
 const prompt = require('prompt-sync')();
- 
+// Array para guardar o item encontrado no parque
+let arrayLastDay = [];
+
 // Criando o meu objeto personagem
 const personagem = {
     nome: '',
-    statusMoral: 0,
+    statusMoral: 1,
 }; 
 
 // Solicitando o nome do persogem
@@ -21,7 +23,9 @@ Em 4 dias, todas as pessoas estarão mortas no planeta, e restam poucos dias de 
 prompt('PRESS ENTER..');
 console.clear();
 
-console.log(`Ajude Dr(a) ${personagem.nome} a fazer tudo que conseguir ou quem sabe até salvar o planeta.
+console.log(`
+
+Ajude Dr(a) ${personagem.nome} a fazer tudo que conseguir ou quem sabe até salvar o planeta.
 
 `);
 prompt('PRESS ENTER..');
@@ -29,31 +33,42 @@ console.clear();
 
 // Objetos contendo ás interações
 const mollysQuarto = { 
-    dia1: `Papai, preciso ir para aula hoje?
+    dia1: `
+    
+    Papai, preciso ir para aula hoje?
     
     `,
-    dia2: `Papai, eu queria ir para aula..
+    dia2: `
+    
+    Papai, eu queria ir para aula..
     
     `,
-    dia3: `Papai..
+    dia3: `
     
-    `,
-    dia4: `Papai.
+    Mollys não está. Foi embora juntamente com a sua esposa.
     
     `,
 }
 
 const banheiro = {
-    dia1: `Você olha para o espelho e se sente orgulhoso..
+    dia1: `
+    
+    Você olha para o espelho e se sente orgulhoso..
     
     `,
-    dia2: `Olhando no espelho, você diz para sí mesmo que está animado para chegar novamente ao trabalho..
+    dia2: `
+    
+    Olhando no espelho, você diz para sí mesmo que está animado para chegar novamente ao trabalho..
     
     `,
-    dia3: `Olhando no espelho, você se pergunta se deve ir para o laboratório ou deve ficar em casa homeoffice..
+    dia3: `
+    
+    Olhando no espelho, você se pergunta se deve ir para o laboratório ou deve ficar em casa homeoffice..
     
     `,
-    dia4: `Você sente que tomará uma decisão muito importante no dia de hoje..
+    dia4: `
+    
+    Você olha para o espelho e sente que tomará uma decisão muito importante no dia de hoje..
     
     `,
 }
@@ -74,11 +89,7 @@ const irTrabalhar = {
     "NEWS: líderes mundiais em toda a Terra dirigiram-se ao seu povo ontem e lhes falaram sobre o futuro "fim dos dias".
     
     `,
-    dia4: `AO SAIR PELA PORTA VOCÊ PEGA O JORNAL:
-
-    "NEWS: O mundo todo está contando a solução do DR(A) ${personagem.nome}."
     
-    `
 }
 
 const goToWork = {
@@ -92,10 +103,13 @@ const goToWork = {
     
     Você ainda vê movimento pelas ruas, nenhum sinal de caos..
     
-    `
-
-
-
+    `,
+    dia3: `DURANTE O TRAJETO:
+    
+    Há um grande tumulto, pessoas desesperadas pela rua..
+    
+    `,   
+    
 }
 
 const atWork = {
@@ -107,23 +121,34 @@ const atWork = {
     `,
     dia2: `NO TRABALHO:
     
-    Você está sendo críticado pelos colegas..
+    Dr(a) ${personagem.nome} está sendo críticado pelos colegas..
     
-    `
+    `,
+    dia3: `NO TRABALHO:
+
+    O laboratório está um caos !! A infra estrutura está toda danificada..
+    
+    `,
+
 }
 
 const lastChoice = {
-    dia1: `
-        VOCÊ ESTÁ NO TRABALHO:
-        [1] Para trabalhar no laborátório
-        [2] Para ir comemorar com os amigos`,
+    dia1: `VOCÊ ESTÁ NO TRABALHO:
 
-    dia2: `
-    VOCÊ ESTÁ NO TRABALHO:
+    [1] Para trabalhar no laborátório
+    [2] Para ir comemorar com os amigos`,
+
+    dia2: `VOCÊ ESTÁ NO TRABALHO:
 
     O SEU LABORATÓRIO ESTÁ TRANCADO !
     [1] Para subir as escadas e ir até a cobertura
     [2] Para voltar para casa e trabalhar homeoffice`,
+    dia3: `VOCÊ ESTÁ NO TRABALHO:
+
+    [1] Para encontrar o arquivo em meio a bagunça e dar andamento no trabalho no laboratório..
+    [2] Para ir até a sua casa e continuar trabalhando homeoffice..
+
+    `,
      
 }
 
@@ -135,20 +160,26 @@ function salaPrincipal() {
             [2] Entrar no quarto de Molys
             [3] Ir trabalhar`)            
 }
+// Função para o ciclo 4
+function lastSalaPrincipal() {
+    return console.log(
+        `VOCÊ ESTÁ NA SALA PRINCIPAL:
+            [1] Ir ao banheiro
+            [2] Ficar em casa
+            [3] Ir para o parque`)            
+}
 
 // Função para dar skip
 function skip() {
     return prompt('PRESS ENTER');
 }
 
-
-
 let escolha = 0
 // Ciclos de 4 dias:
-for (let dia = 1; dia < 4; dia++) {
-    // Primeiro dia (ganha moral)
+for (let dia = 1; dia <= 4; dia++) {
+    // Primeiro dia ganha status moral
     if(dia == 1){
-        do { // Valindo a repetição do arco 'casa'        
+        do {        
         salaPrincipal();
         escolha = +prompt('');
         console.clear();   
@@ -195,7 +226,7 @@ for (let dia = 1; dia < 4; dia++) {
         skip();
         console.clear();
     }
-    //Segunda validação
+    
         do {
             console.log(lastChoice.dia1);
             escolha = prompt('')
@@ -203,13 +234,17 @@ for (let dia = 1; dia < 4; dia++) {
         } while (escolha != 2 && escolha != 1);         
 
         if (escolha == 2){
-            console.log(`Muito bom confraternizar com os amigos. MORAL ++
+            console.log(`
+            
+            Muito bom confraternizar com os amigos.
             
             `);
             personagem.statusMoral++          
         }
         if (escolha == 1){
-            console.log(`Ótimo Dr(a) ${personagem.nome} que bom que está pensando em aprimorar ás suas skills. MORAL ++
+            console.log(`
+            
+            Ótimo Dr(a) ${personagem.nome} que bom que está pensando em aprimorar ás suas skills.
             
             `);
             personagem.statusMoral++            
@@ -224,15 +259,19 @@ for (let dia = 1; dia < 4; dia++) {
         console.clear();
     }  
     
-    // Segundo dia (Ganha moral e perde moral)
+    // Segundo dia (Ganha  status moral e perde moral)
     if (dia == 2){
-    console.log(`Em 3 dias, todas as pessoas estarão mortas no planeta, e restam poucos dias de vida a essas pessoas.
+    console.log(`
+    
+    Em 3 dias, todas as pessoas estarão mortas no planeta, e restam poucos dias de vida a essas pessoas.
     
     `)
     skip();
     console.clear();
 
-    console.log(`Ajude Dr(a) ${personagem.nome} a fazer tudo que conseguir ou quem sabe até salvar o planeta.
+    console.log(`
+    
+    Ajude Dr(a) ${personagem.nome} a fazer tudo que conseguir ou quem sabe até salvar o planeta.
     
     `);
     skip();
@@ -281,9 +320,7 @@ for (let dia = 1; dia < 4; dia++) {
 
             skip();
             console.clear();
-
-            //personagem.statusMoral++ // Adicionando ponto ao status
-
+        
         }
 
         do {
@@ -294,12 +331,20 @@ for (let dia = 1; dia < 4; dia++) {
         } while (escolha != 2 && escolha != 1);
         
         if (escolha == 2){
-            console.log('Você retorna para sua casa e resolve dar andamento na pesquisa.. MORAL ++')
+            console.log(`
+            
+            Você retorna para sua casa e resolve dar andamento na pesquisa..
+            
+            `)
             personagem.statusMoral++
         }
         if (escolha == 1){
-            console.log('Você encontra seu amigo de confiaça e ele lhe diz que vai abandonar a pesquisa.. MORAL --');
-            personagem.statusMoral--
+            console.log(`
+            
+            Você encontra seu amigo de confiaça e ele lhe diz que vai abandonar a pesquisa..
+            
+            `);
+            
         }
 
         skip();
@@ -311,9 +356,185 @@ for (let dia = 1; dia < 4; dia++) {
         console.clear();         
         
     }     
-     
-//     // Terceiro dia (Perde moral)
+         
+    // Terceiro dia (Perde moral);
+    if (dia == 3){
+    console.log(`
+    
+    Em 2 dias, todas as pessoas estarão mortas no planeta, e restam poucos dias de vida a essas pessoas.
+    
+    `)
+    skip();
+    console.clear();
 
-//     
-//     // Quarto dia (Escolhas influenciarão nos status da moral e definirá se salva ou não o mundo.)
-}  
+    console.log(`
+    
+    Ajude Dr(a) ${personagem.nome} a fazer tudo que conseguir ou quem sabe até salvar o planeta.
+    
+    `);
+    skip();
+    console.clear();
+
+    do {
+        salaPrincipal();
+        escolha = +prompt('');
+        console.clear();
+        
+        if (escolha == 1){
+            console.log(
+                banheiro.dia3
+                );
+            skip();
+            console.clear();
+        }
+
+        if (escolha == 2){
+            console.log(
+                mollysQuarto.dia3
+            );
+            skip();
+            console.clear();
+        }
+        
+    } while (escolha != 3);
+        
+        if (escolha == 3){
+            console.log(
+                irTrabalhar.dia3
+            );
+            skip();
+            console.clear();
+            
+            console.log(
+                goToWork.dia3
+            )
+
+            skip();
+            console.clear();
+
+            console.log(
+                atWork.dia3
+            );
+
+            skip();
+            console.clear();
+
+            
+        }
+
+        do {
+            console.log(lastChoice.dia3);
+            escolha = prompt('')
+            console.clear();
+            
+        } while (escolha != 2 && escolha != 1);
+        
+        if (escolha == 2){
+            console.log(`
+            
+            Você está muito perto de conseguir más lhe resta pouco tempo..
+            
+            `)
+            personagem.statusMoral++
+        }
+        if (escolha == 1){
+            console.log(`
+            
+            Em meio a toda bagunça do laborátório você perde muito tempo, más tem um insight.
+            
+            `);
+            
+        }
+
+        skip();
+        console.clear();
+        console.log(`03/11/1990
+    
+        `)
+        skip();
+        console.clear();         
+        
+    }  
+
+     
+    // Quarto dia (Escolhas influenciarão nos status da moral e definirá se salva ou não o mundo.);
+    if (dia == 4){
+        console.log(`
+        
+        Em 1 dia, todas as pessoas estarão mortas no planeta.
+    
+        `)
+        skip();
+        console.clear();
+
+        console.log(`
+        
+        Ajude Dr(a) ${personagem.nome} a fazer tudo que conseguir ou quem sabe até salvar o planeta.
+    
+        `);
+        skip();
+        console.clear();    
+        
+        do {
+            lastSalaPrincipal();
+            escolha = +prompt('');
+            console.clear();
+        
+            if (escolha == 1){
+                console.log(
+                banheiro.dia4
+                );
+                skip();
+                console.clear();
+            }
+        } while (escolha != 2 && escolha != 3);
+
+        if (escolha == 2){
+            console.log(`
+            
+            Finalizou o soro, é tudo ou nada !
+            
+            `
+            );
+            skip();
+            console.clear();
+            }       
+                
+        if (escolha == 3){
+            console.log(`
+            
+            No parque, Dr(a) ${personagem.nome} encontrou o rascunho do Doutorando James e teve um insight que pode mudar tudo.
+            
+            `);
+            arrayLastDay.push(1);
+            skip();
+            console.clear();
+            
+            console.log(`
+        
+            Agora que temos o Caderno de rascunho de James, precisamos contar com a moral do Dr(a) ${personagem.nome} para finalizar a cura !
+        
+            `);
+            skip();
+            console.clear();
+        }
+    }
+}           
+  
+  
+// Condição para vencer o Jogo
+let rascunho = arrayLastDay[0];      
+           
+if (personagem.statusMoral == 5 && rascunho == 1 ) {
+    console.log(`
+        
+    Dr(a) ${personagem.nome} salvou o mundo !!! Herói que será lembrado por toda história..
+        
+        `);
+} else {
+    console.log(`
+        
+    No dia 04/11/1990 a humanidade foi extinta, a causa foi uma mutação genética contida em uma "cura" feita pela equipe do Dr(a) ${personagem.nome}.. 
+        
+    `);
+}
