@@ -14,6 +14,16 @@ const personagem = {
         console.clear();
     } while (personagem.nome == '');
 
+//Objeto com informações sobre passagem do tempo
+let diasData = {
+    dia1: '30/10/1990',
+    dia2: '01/11/1990',
+    dia3: '02/11/1990',
+    dia4: '03/11/1990'
+}
+
+let diaD  
+// Informações sobre as condições para vitória, vou deixar no README.
 // Introdução do Jogo
 console.log(`30/10/1990
 
@@ -137,12 +147,13 @@ const lastChoice = {
 
     [1] Para trabalhar no laborátório
     [2] Para ir comemorar com os amigos`,
-
+    
     dia2: `VOCÊ ESTÁ NO TRABALHO:
 
     O SEU LABORATÓRIO ESTÁ TRANCADO !
     [1] Para subir as escadas e ir até a cobertura
     [2] Para voltar para casa e trabalhar homeoffice`,
+    
     dia3: `VOCÊ ESTÁ NO TRABALHO:
 
     [1] Para encontrar o arquivo em meio a bagunça e dar andamento no trabalho no laboratório..
@@ -160,6 +171,7 @@ function salaPrincipal() {
             [2] Entrar no quarto de Molys
             [3] Ir trabalhar`)            
 }
+
 // Função para o ciclo 4
 function lastSalaPrincipal() {
     return console.log(
@@ -176,10 +188,28 @@ function skip() {
 
 let escolha = 0
 // Ciclos de 4 dias:
-for (let dia = 1; dia <= 4; dia++) {
+for (let dia = 1; dia <= 4; dia++) {   
+    function controleDoTempo() {
+        if (dia == 1){
+            diaD = diasData.dia1
+      } if (dia == 2){
+            diaD = diasData.dia2
+      } if (dia == 3){
+            diaD = diasData.dia3
+      } if (dia == 4){
+            diaD = diasData.dia4
+      }
+        return console.log(diaD)
+      }
+    console.clear();
     // Primeiro dia ganha status moral
     if(dia == 1){
-        do {        
+        controleDoTempo();
+        skip();
+        console.clear();
+
+        do {    
+            
         salaPrincipal();
         escolha = +prompt('');
         console.clear();   
@@ -200,9 +230,9 @@ for (let dia = 1; dia <= 4; dia++) {
              skip();
             console.clear();
         }
-    } while (escolha != 3);                
-    // Concluído a validação de repetição..
 
+    } while (escolha != 3);                
+    
         if (escolha == 3){
             console.log(
                 irTrabalhar.dia1
@@ -210,8 +240,7 @@ for (let dia = 1; dia <= 4; dia++) {
             skip();
             console.clear();
             personagem.statusMoral++            
-           
-        
+                   
         console.log(
             goToWork.dia1
         );
@@ -251,16 +280,16 @@ for (let dia = 1; dia <= 4; dia++) {
         }
         
         skip();
-        console.clear();
-        console.log(`01/11/1990
-    
-        `)
-        skip();
-        console.clear();
+        console.clear();       
+        
     }  
     
     // Segundo dia (Ganha  status moral e perde moral)
     if (dia == 2){
+    controleDoTempo();
+    skip();
+    console.clear();
+
     console.log(`
     
     Em 3 dias, todas as pessoas estarão mortas no planeta, e restam poucos dias de vida a essas pessoas.
@@ -348,17 +377,15 @@ for (let dia = 1; dia <= 4; dia++) {
         }
 
         skip();
-        console.clear();
-        console.log(`02/11/1990
-    
-        `)
-        skip();
-        console.clear();         
-        
-    }     
-         
-    // Terceiro dia (Perde moral);
+        console.clear();      
+    }         
+      
+    // Terceiro dia (Perde status moral);
     if (dia == 3){
+    controleDoTempo();
+    skip();
+    console.clear();
+
     console.log(`
     
     Em 2 dias, todas as pessoas estarão mortas no planeta, e restam poucos dias de vida a essas pessoas.
@@ -418,7 +445,6 @@ for (let dia = 1; dia <= 4; dia++) {
 
             skip();
             console.clear();
-
             
         }
 
@@ -447,18 +473,16 @@ for (let dia = 1; dia <= 4; dia++) {
         }
 
         skip();
-        console.clear();
-        console.log(`03/11/1990
-    
-        `)
-        skip();
-        console.clear();         
-        
-    }  
-
-     
+        console.clear();       
+    }        
+         
+   
     // Quarto dia (Escolhas influenciarão nos status da moral e definirá se salva ou não o mundo.);
     if (dia == 4){
+        controleDoTempo();
+        skip();
+        console.clear();
+
         console.log(`
         
         Em 1 dia, todas as pessoas estarão mortas no planeta.
@@ -520,7 +544,6 @@ for (let dia = 1; dia <= 4; dia++) {
         }
     }
 }           
-  
   
 // Condição para vencer o Jogo
 let rascunho = arrayLastDay[0];      
