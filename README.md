@@ -7,6 +7,9 @@ No programa o jogador escolhe um protagonista, que terá 4 dias para fazer as es
 Abaixo segue ás condições de vitória, para que o examinador consiga otimizar o seu tempo e testar todas ás condições:
 
 Primeiro dia: Idependente das escolhas o personagem ganha status de Moral.
+
 segundo dia: Quando estiver no trabalho, ele deve retornar para casa e continuar pesquisando.
+
 Terceiro dia: Ele deve retornar para casa e novamente continuar a pesquisa homeoffice.
+
 Quarto dia: O protagonista deve ir até o parque para encontrar o rascunho perdido por um doutorando.
