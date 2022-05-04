@@ -22,6 +22,11 @@ let diasData = {
     dia4: '03/11/1990'
 }
 
+let tempoDia = [10,15,00]
+let tempoDia2 = [09,12,03]
+let tempoDia3 = [10,16,03]
+let tempoDia4 = [08,13,05]
+
 let diaD  
 // Informações sobre as condições para vitória, vou deixar no README.
 // Introdução do Jogo
@@ -163,6 +168,22 @@ const lastChoice = {
      
 }
 
+function tempoSala (){
+    return console.log(`${tempoDia[0]}h:${tempoDia[1] += 3 }min`);
+}
+  
+  function tempoGoToWork (){
+    return console.log(`${tempoDia[0] += 1}h:${tempoDia[1] += 4}min`);
+}
+  
+  function tempoAtWork (){
+    return console.log(`${tempoDia[0] += 2}h:${tempoDia[1] += 3}min`);
+}
+  
+  function tempoLeaveWork(){
+    return console.log(`${tempoDia[0] += 3}h:${tempoDia[1] += 2}min`);
+}
+
 // Função para a sala principal
 function salaPrincipal() {
     return console.log(
@@ -187,7 +208,7 @@ function skip() {
 }
 
 let escolha = 0
-// Ciclos de 4 dias:
+// Ciclos de 4 dias
 for (let dia = 1; dia <= 4; dia++) {   
     function controleDoTempo() {
         if (dia == 1){
@@ -202,12 +223,9 @@ for (let dia = 1; dia <= 4; dia++) {
         return console.log(diaD)
       }
     console.clear();
-    // Primeiro dia ganha status moral
+    
     if(dia == 1){
-        controleDoTempo();
-        skip();
-        console.clear();
-
+        
         do {    
             
         salaPrincipal();
@@ -218,6 +236,7 @@ for (let dia = 1; dia <= 4; dia++) {
             console.log(
                 banheiro.dia1
                 )
+            tempoSala();
             skip()
             console.clear(); 
     
@@ -227,7 +246,8 @@ for (let dia = 1; dia <= 4; dia++) {
             console.log(
                  mollysQuarto.dia1
                 )
-             skip();
+            tempoSala();
+            skip();
             console.clear();
         }
 
@@ -237,6 +257,7 @@ for (let dia = 1; dia <= 4; dia++) {
             console.log(
                 irTrabalhar.dia1
             )
+            tempoGoToWork();
             skip();
             console.clear();
             personagem.statusMoral++            
@@ -244,14 +265,14 @@ for (let dia = 1; dia <= 4; dia++) {
         console.log(
             goToWork.dia1
         );
-
+        tempoGoToWork();    
         skip();
         console.clear();
 
         console.log(
             atWork.dia1
         );
-
+        tempoLeaveWork();
         skip();
         console.clear();
     }
@@ -268,6 +289,7 @@ for (let dia = 1; dia <= 4; dia++) {
             Muito bom confraternizar com os amigos.
             
             `);
+            tempoGoToWork();
             personagem.statusMoral++          
         }
         if (escolha == 1){
@@ -276,6 +298,7 @@ for (let dia = 1; dia <= 4; dia++) {
             Ótimo Dr(a) ${personagem.nome} que bom que está pensando em aprimorar ás suas skills.
             
             `);
+            tempoLeaveWork();
             personagem.statusMoral++            
         }
         
@@ -283,7 +306,7 @@ for (let dia = 1; dia <= 4; dia++) {
         console.clear();       
         
     }  
-    
+    tempoDia = [09,05,00]
     // Segundo dia (Ganha  status moral e perde moral)
     if (dia == 2){
     controleDoTempo();
@@ -315,6 +338,7 @@ for (let dia = 1; dia <= 4; dia++) {
             console.log(
                 banheiro.dia2
                 );
+            tempoSala();
             skip();
             console.clear();
         }
@@ -323,6 +347,7 @@ for (let dia = 1; dia <= 4; dia++) {
             console.log(
                 mollysQuarto.dia2
             );
+            tempoSala();
             skip();
             console.clear();
         }
@@ -333,20 +358,21 @@ for (let dia = 1; dia <= 4; dia++) {
             console.log(
                 irTrabalhar.dia2
             );
+            tempoGoToWork();
             skip();
             console.clear();
             
             console.log(
                 goToWork.dia2
-            )
-
+            );
+            tempoGoToWork();
             skip();
             console.clear();
 
             console.log(
                 atWork.dia2
             );
-
+            tempoAtWork();
             skip();
             console.clear();
         
@@ -364,7 +390,8 @@ for (let dia = 1; dia <= 4; dia++) {
             
             Você retorna para sua casa e resolve dar andamento na pesquisa..
             
-            `)
+            `);
+            tempoLeaveWork();
             personagem.statusMoral++
         }
         if (escolha == 1){
@@ -373,13 +400,14 @@ for (let dia = 1; dia <= 4; dia++) {
             Você encontra seu amigo de confiaça e ele lhe diz que vai abandonar a pesquisa..
             
             `);
+            tempoLeaveWork();
             
         }
 
         skip();
         console.clear();      
     }         
-      
+    tempoDia = [10,08,00] 
     // Terceiro dia (Perde status moral);
     if (dia == 3){
     controleDoTempo();
@@ -411,6 +439,7 @@ for (let dia = 1; dia <= 4; dia++) {
             console.log(
                 banheiro.dia3
                 );
+            tempoSala();    
             skip();
             console.clear();
         }
@@ -419,6 +448,7 @@ for (let dia = 1; dia <= 4; dia++) {
             console.log(
                 mollysQuarto.dia3
             );
+            tempoSala();
             skip();
             console.clear();
         }
@@ -429,20 +459,21 @@ for (let dia = 1; dia <= 4; dia++) {
             console.log(
                 irTrabalhar.dia3
             );
+            tempoGoToWork();
             skip();
             console.clear();
             
             console.log(
                 goToWork.dia3
-            )
-
+            );
+            tempoGoToWork();            
             skip();
             console.clear();
 
             console.log(
                 atWork.dia3
             );
-
+            tempoAtWork();
             skip();
             console.clear();
             
@@ -460,7 +491,8 @@ for (let dia = 1; dia <= 4; dia++) {
             
             Você está muito perto de conseguir más lhe resta pouco tempo..
             
-            `)
+            `);
+            tempoLeaveWork();
             personagem.statusMoral++
         }
         if (escolha == 1){
@@ -469,6 +501,7 @@ for (let dia = 1; dia <= 4; dia++) {
             Em meio a toda bagunça do laborátório você perde muito tempo, más tem um insight.
             
             `);
+            tempoLeaveWork();
             
         }
 
@@ -476,7 +509,7 @@ for (let dia = 1; dia <= 4; dia++) {
         console.clear();       
     }        
          
-   
+    tempoDia = [10,03,00]
     // Quarto dia (Escolhas influenciarão nos status da moral e definirá se salva ou não o mundo.);
     if (dia == 4){
         controleDoTempo();
@@ -507,7 +540,8 @@ for (let dia = 1; dia <= 4; dia++) {
             if (escolha == 1){
                 console.log(
                 banheiro.dia4
-                );
+                );                
+                tempoSala();
                 skip();
                 console.clear();
             }
@@ -520,6 +554,7 @@ for (let dia = 1; dia <= 4; dia++) {
             
             `
             );
+            tempoAtWork();
             skip();
             console.clear();
             }       
@@ -530,6 +565,7 @@ for (let dia = 1; dia <= 4; dia++) {
             No parque, Dr(a) ${personagem.nome} encontrou o rascunho do Doutorando James e teve um insight que pode mudar tudo.
             
             `);
+            tempoAtWork();
             arrayLastDay.push(1);
             skip();
             console.clear();
@@ -539,6 +575,7 @@ for (let dia = 1; dia <= 4; dia++) {
             Agora que temos o Caderno de rascunho de James, precisamos contar com a moral do Dr(a) ${personagem.nome} para finalizar a cura !
         
             `);
+            tempoAtWork();
             skip();
             console.clear();
         }
