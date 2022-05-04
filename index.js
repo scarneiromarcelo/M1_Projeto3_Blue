@@ -14,7 +14,7 @@ const personagem = {
         console.clear();
     } while (personagem.nome == '');
 
-//Objeto com informações sobre passagem do tempo
+// Objeto com informações sobre passagem do tempo
 let diasData = {
     dia1: '30/10/1990',
     dia2: '01/11/1990',
@@ -23,11 +23,8 @@ let diasData = {
 }
 
 let tempoDia = [10,15,00]
-let tempoDia2 = [09,12,03]
-let tempoDia3 = [10,16,03]
-let tempoDia4 = [08,13,05]
+let diaD
 
-let diaD  
 // Informações sobre as condições para vitória, vou deixar no README.
 // Introdução do Jogo
 console.log(`30/10/1990
@@ -103,8 +100,7 @@ const irTrabalhar = {
 
     "NEWS: líderes mundiais em toda a Terra dirigiram-se ao seu povo ontem e lhes falaram sobre o futuro "fim dos dias".
     
-    `,
-    
+    `,    
 }
 
 const goToWork = {
@@ -124,7 +120,6 @@ const goToWork = {
     Há um grande tumulto, pessoas desesperadas pela rua..
     
     `,   
-    
 }
 
 const atWork = {
@@ -144,7 +139,6 @@ const atWork = {
     O laboratório está um caos !! A infra estrutura está toda danificada..
     
     `,
-
 }
 
 const lastChoice = {
@@ -164,8 +158,7 @@ const lastChoice = {
     [1] Para encontrar o arquivo em meio a bagunça e dar andamento no trabalho no laboratório..
     [2] Para ir até a sua casa e continuar trabalhando homeoffice..
 
-    `,
-     
+    `,     
 }
 
 function tempoSala (){
@@ -262,20 +255,20 @@ for (let dia = 1; dia <= 4; dia++) {
             console.clear();
             personagem.statusMoral++            
                    
-        console.log(
-            goToWork.dia1
-        );
-        tempoGoToWork();    
-        skip();
-        console.clear();
+            console.log(
+                goToWork.dia1
+            );
+            tempoGoToWork();    
+            skip();
+            console.clear();
 
-        console.log(
-            atWork.dia1
-        );
-        tempoLeaveWork();
-        skip();
-        console.clear();
-    }
+            console.log(
+                atWork.dia1
+            );
+            tempoLeaveWork();
+            skip();
+            console.clear();
+        }
     
         do {
             console.log(lastChoice.dia1);
@@ -289,94 +282,95 @@ for (let dia = 1; dia <= 4; dia++) {
             Muito bom confraternizar com os amigos.
             
             `);
-            tempoGoToWork();
+            tempoLeaveWork();
             personagem.statusMoral++          
         }
+
         if (escolha == 1){
             console.log(`
             
             Ótimo Dr(a) ${personagem.nome} que bom que está pensando em aprimorar ás suas skills.
             
             `);
-            tempoLeaveWork();
+            tempoGoToWork();
             personagem.statusMoral++            
         }
         
         skip();
         console.clear();       
-        
-    }  
+    }   
+    
     tempoDia = [09,05,00]
     // Segundo dia (Ganha  status moral e perde moral)
     if (dia == 2){
-    controleDoTempo();
-    skip();
-    console.clear();
-
-    console.log(`
-    
-    Em 3 dias, todas as pessoas estarão mortas no planeta, e restam poucos dias de vida a essas pessoas.
-    
-    `)
-    skip();
-    console.clear();
-
-    console.log(`
-    
-    Ajude Dr(a) ${personagem.nome} a fazer tudo que conseguir ou quem sabe até salvar o planeta.
-    
-    `);
-    skip();
-    console.clear();    
-        
-    do {
-        salaPrincipal();
-        escolha = +prompt('');
+        controleDoTempo();
+        skip();
         console.clear();
+
+        console.log(`
+    
+        Em 3 dias, todas as pessoas estarão mortas no planeta, e restam poucos dias de vida a essas pessoas.
+    
+        `)
+        skip();
+        console.clear();
+
+        console.log(`
+    
+        Ajude Dr(a) ${personagem.nome} a fazer tudo que conseguir ou quem sabe até salvar o planeta.
+    
+        `);
+        skip();
+        console.clear();    
         
-        if (escolha == 1){
-            console.log(
-                banheiro.dia2
+        do {
+            salaPrincipal();
+            escolha = +prompt('');
+            console.clear();
+        
+            if (escolha == 1){
+                console.log(
+                    banheiro.dia2
                 );
-            tempoSala();
-            skip();
-            console.clear();
-        }
+                tempoSala();
+                skip();
+                console.clear();
+            }
 
-        if (escolha == 2){
-            console.log(
-                mollysQuarto.dia2
-            );
-            tempoSala();
-            skip();
-            console.clear();
-        }
+            if (escolha == 2){
+                console.log(
+                    mollysQuarto.dia2
+                );
+                tempoSala();
+                skip();
+                console.clear();
+            }
         
-    } while (escolha != 3);
+        } while (escolha != 3);
         
-        if (escolha == 3){
-            console.log(
-                irTrabalhar.dia2
-            );
-            tempoGoToWork();
-            skip();
-            console.clear();
+            if (escolha == 3){
+                console.log(
+                    irTrabalhar.dia2
+                );
+                tempoGoToWork();
+                skip();
+                console.clear();
             
-            console.log(
-                goToWork.dia2
-            );
-            tempoGoToWork();
-            skip();
-            console.clear();
+                console.log(
+                    goToWork.dia2
+                );
+                tempoGoToWork();
+                skip();
+                console.clear();
 
-            console.log(
-                atWork.dia2
-            );
-            tempoAtWork();
-            skip();
-            console.clear();
+                console.log(
+                    atWork.dia2
+                );
+                tempoAtWork();
+                skip();
+                console.clear();
         
-        }
+            }
 
         do {
             console.log(lastChoice.dia2);
@@ -406,54 +400,55 @@ for (let dia = 1; dia <= 4; dia++) {
 
         skip();
         console.clear();      
-    }         
+    }
+
     tempoDia = [10,08,00] 
     // Terceiro dia (Perde status moral);
     if (dia == 3){
-    controleDoTempo();
-    skip();
-    console.clear();
-
-    console.log(`
-    
-    Em 2 dias, todas as pessoas estarão mortas no planeta, e restam poucos dias de vida a essas pessoas.
-    
-    `)
-    skip();
-    console.clear();
-
-    console.log(`
-    
-    Ajude Dr(a) ${personagem.nome} a fazer tudo que conseguir ou quem sabe até salvar o planeta.
-    
-    `);
-    skip();
-    console.clear();
-
-    do {
-        salaPrincipal();
-        escolha = +prompt('');
+        controleDoTempo();
+        skip();
         console.clear();
-        
-        if (escolha == 1){
-            console.log(
-                banheiro.dia3
-                );
-            tempoSala();    
-            skip();
-            console.clear();
-        }
 
-        if (escolha == 2){
-            console.log(
-                mollysQuarto.dia3
-            );
-            tempoSala();
-            skip();
+        console.log(`
+    
+        Em 2 dias, todas as pessoas estarão mortas no planeta, e restam poucos dias de vida a essas pessoas.
+    
+        `)
+        skip();
+        console.clear();
+
+        console.log(`
+    
+        Ajude Dr(a) ${personagem.nome} a fazer tudo que conseguir ou quem sabe até salvar o planeta.
+    
+        `);
+        skip();
+        console.clear();
+
+        do {
+            salaPrincipal();
+            escolha = +prompt('');
             console.clear();
-        }
         
-    } while (escolha != 3);
+            if (escolha == 1){
+                console.log(
+                    banheiro.dia3
+                );
+                tempoSala();    
+                skip();
+                console.clear();
+            }
+
+            if (escolha == 2){
+                console.log(
+                    mollysQuarto.dia3
+                );
+                tempoSala();
+                skip();
+                console.clear();
+            }
+        
+        } while (escolha != 3);
         
         if (escolha == 3){
             console.log(
@@ -539,7 +534,7 @@ for (let dia = 1; dia <= 4; dia++) {
         
             if (escolha == 1){
                 console.log(
-                banheiro.dia4
+                    banheiro.dia4
                 );                
                 tempoSala();
                 skip();
@@ -557,7 +552,7 @@ for (let dia = 1; dia <= 4; dia++) {
             tempoAtWork();
             skip();
             console.clear();
-            }       
+        }       
                 
         if (escolha == 3){
             console.log(`
