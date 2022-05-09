@@ -580,6 +580,16 @@ for (let dia = 1; dia <= 4; dia++) {
             tempoAtWork();
             skip();
             console.clear();
+
+            console.log(`
+            Nome: ${personagem.nome}
+            Status moral: ${personagem.statusMoral}
+            Item encontrado: ${rascunho}
+        
+            `);
+                       
+            skip();
+            console.clear();
         }       
                 
         if (escolha == 3){
@@ -599,6 +609,17 @@ for (let dia = 1; dia <= 4; dia++) {
         
             `);
             tempoAtWork();
+
+            skip();
+            console.clear();
+
+            rascunho = arrayLastDay[0];          
+            console.log(`
+            Nome: ${personagem.nome}
+            Status moral: ${personagem.statusMoral}
+            Item encontrado: ${rascunho}
+        
+            `);
                        
             skip();
             console.clear();
@@ -606,18 +627,7 @@ for (let dia = 1; dia <= 4; dia++) {
         }
     }
 }           
-  
-// Condição para vencer o Jogo
-rascunho = arrayLastDay[0];          
-console.log(`
-Nome: ${personagem.nome}
-Status moral: ${personagem.statusMoral}
-Item encontrado: ${rascunho}
-        
-`);
 
-skip();
-console.clear();
            
 if (personagem.statusMoral == 5 && rascunho == 1 ) {
     console.log(`
