@@ -1,6 +1,7 @@
 const prompt = require('prompt-sync')();
 // Array para guardar o item encontrado no parque
 let arrayLastDay = [];
+let rascunho = 0
 
 // Criando o meu objeto personagem
 const personagem = {
@@ -295,6 +296,15 @@ for (let dia = 1; dia <= 4; dia++) {
             tempoGoToWork();
             personagem.statusMoral++            
         }
+        skip();
+        console.clear();
+
+        console.log(`
+        Nome: ${personagem.nome}
+        Status moral: ${personagem.statusMoral}
+        Item encontrado: ${rascunho}
+        
+        `);    
         
         skip();
         console.clear();       
@@ -397,6 +407,15 @@ for (let dia = 1; dia <= 4; dia++) {
             tempoLeaveWork();
             
         }
+        skip();
+        console.clear();
+
+        console.log(`
+        Nome: ${personagem.nome}
+        Status moral: ${personagem.statusMoral}
+        Item encontrado: ${rascunho}
+        
+        `);
 
         skip();
         console.clear();      
@@ -499,6 +518,15 @@ for (let dia = 1; dia <= 4; dia++) {
             tempoLeaveWork();
             
         }
+        skip();
+        console.clear();
+
+        console.log(`
+        Nome: ${personagem.nome}
+        Status moral: ${personagem.statusMoral}
+        Item encontrado: ${rascunho}
+        
+        `);
 
         skip();
         console.clear();       
@@ -571,14 +599,25 @@ for (let dia = 1; dia <= 4; dia++) {
         
             `);
             tempoAtWork();
+                       
             skip();
             console.clear();
+            
         }
     }
 }           
   
 // Condição para vencer o Jogo
-let rascunho = arrayLastDay[0];      
+rascunho = arrayLastDay[0];          
+console.log(`
+Nome: ${personagem.nome}
+Status moral: ${personagem.statusMoral}
+Item encontrado: ${rascunho}
+        
+`);
+
+skip();
+console.clear();
            
 if (personagem.statusMoral == 5 && rascunho == 1 ) {
     console.log(`
